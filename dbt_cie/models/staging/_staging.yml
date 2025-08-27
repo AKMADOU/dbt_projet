@@ -1,0 +1,71 @@
+version: 2
+
+sources:
+  - name: cie_source
+    description: "Source système CIE - Tables source pour l'ingestion"
+    database: '"sv3-cie"'
+    schema: dbo
+    
+    tables:
+      - name: jfa_conventionfacturation
+        description: "Table des conventions de facturation JFA"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+      
+      - name: contract
+        description: "Table des contrats clients"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+      
+      - name: contractBase
+        description: "Table contractBase - informations de base des contrats"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+      
+      - name: contact
+        description: "Table des contacts clients"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+  - name: data_quality_meta
+    description: "Tables de métadonnées pour le contrôle qualité"
+    database: '"sodeci_data_management"'
+    schema: public
+    
+    tables:
+      - name: source_data_quality
+        description: "Métriques de qualité des données source"
+      - name: dest_data_quality  
+        description: "Métriques de qualité des données destination"
+      - name: data_table
+        description: "Référentiel des tables"
+      - name: data_quality
+        description: "Référentiel des métriques de qualité"

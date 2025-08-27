@@ -1,0 +1,47 @@
+dbt_cie:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: none
+      user: admin
+      password: ""
+      host: 10.10.20.36
+      port: 30808
+      database: "sv3-cie"
+      schema: "dbo"
+      http_scheme: http
+    prod:
+      type: trino
+      method: none
+      user: admin
+      password: ""
+      host: 10.10.20.36
+      port: 30808
+      database: "sv3-cie"
+      schema: "dbo"
+      http_scheme: http
+
+nessie:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: none
+      user: admin
+      password: ""
+      host: 10.10.20.36
+      port: 30808
+      database: "minio-test"
+      schema: "cie-ods"
+      http_scheme: http
+    prod:
+      type: trino
+      method: none
+      user: admin
+      password: ""
+      host: 10.10.20.36
+      port: 30808
+      database: "minio-test"
+      schema: "cie-ods"
+      http_scheme: http

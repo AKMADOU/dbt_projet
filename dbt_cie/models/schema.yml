@@ -1,0 +1,120 @@
+version: 2
+
+models:
+  # === STAGING MODELS ===
+  - name: stg_jfa_conventionfacturation
+    description: "Staging - Conventions de facturation JFA avec traitement des colonnes varbinary"
+    columns:
+      - name: partition_id
+        description: "Partition mensuelle basée sur createdon"
+        tests:
+          - not_null
+      - name: createdon
+        description: "Date de création originale"
+        tests:
+          - not_null
+
+  - name: stg_contract
+    description: "Staging - Contrats clients avec traitement des colonnes varbinary"
+    columns:
+      - name: partition_id
+        description: "Partition mensuelle basée sur createdon"
+        tests:
+          - not_null
+      - name: createdon
+        description: "Date de création originale"
+        tests:
+          - not_null
+
+  - name: stg_contractBase
+    description: "Staging - Informations de base des contrats avec traitement des colonnes varbinary"
+    columns:
+      - name: partition_id
+        description: "Partition mensuelle basée sur createdon"
+        tests:
+          - not_null
+      - name: createdon
+        description: "Date de création originale"
+        tests:
+          - not_null
+
+  - name: stg_contact
+    description: "Staging - Contacts clients avec traitement des colonnes varbinary"
+    columns:
+      - name: partition_id
+        description: "Partition mensuelle basée sur createdon"
+        tests:
+          - not_null
+      - name: createdon
+        description: "Date de création originale"
+        tests:
+          - not_null
+
+  # === MARTS MODELS ===
+  - name: dim_jfa_conventionfacturation
+    description: "Dimension - Conventions de facturation JFA partitionnée par mois"
+    tests:
+      - dbt_utils.row_count:
+          compare_model: ref('stg_jfa_conventionfacturation')
+          severity: warn
+    columns:
+      - name: partition_id
+        description: "Clé de partitioning mensuelle"
+        tests:
+          - not_null
+          - dbt_utils.not_constant
+      - name: createdon
+        description: "Date de création originale"
+        tests:
+          - not_null
+
+  - name: dim_contract
+    description: "Dimension - Contrats clients partitionnée par mois"
+    tests:
+      - dbt_utils.row_count:
+          compare_model: ref('stg_contract')
+          severity: warn
+    columns:
+      - name: partition_id
+        description: "Clé de partitioning mensuelle"
+        tests:
+          - not_null
+          - dbt_utils.not_constant
+      - name: createdon
+        description: "Date de création originale"
+        tests:
+          - not_null
+
+  - name: dim_contractBase
+    description: "Dimension - Informations de base des contrats partitionnée par mois"
+    tests:
+      - dbt_utils.row_count:
+          compare_model: ref('stg_contractBase')
+          severity: warn
+    columns:
+      - name: partition_id
+        description: "Clé de partitioning mensuelle"
+        tests:
+          - not_null
+          - dbt_utils.not_constant
+      - name: createdon
+        description: "Date de création originale"
+        tests:
+          - not_null
+
+  - name: dim_contact
+    description: "Dimension - Contacts clients partitionnée par mois"
+    tests:
+      - dbt_utils.row_count:
+          compare_model: ref('stg_contact')
+          severity: warn
+    columns:
+      - name: partition_id
+        description: "Clé de partitioning mensuelle"
+        tests:
+          - not_null
+          - dbt_utils.not_constant
+      - name: createdon
+        description: "Date de création originale"
+        tests:
+          - not_null

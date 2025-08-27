@@ -1,0 +1,49 @@
+name: 'dbt_cie'
+version: '1.0.0'
+config-version: 2
+
+profile: 'nessie'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_cie:
+    +materialized: table
+    +file_format: parquet
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      +partition_by: ['partition_id']
+      +file_format: parquet
+
+vars:
+  # Configuration des schémas
+  schema_src: '"sv3-cie".dbo'
+  schema_dest: cie-ods
+  schema_quality: sodeci_data_management.public
+  
+  # Tables à traiter
+  table_list:
+    - jfa_conventionfacturation
+    - contract
+    - contractBase
+    - contact
+  
+  # Tag pour le contrôle qualité
+  quality_tag: CIE_Abonne_All-Quality
+
+on-run-start:
+  - "{{ log('🚀 Démarrage du pipeline dbt_cie', info=true) }}"
+
+on-run-end:
+  - "{{ log('✅ Fin du pipeline dbt_cie', info=true) }}"
