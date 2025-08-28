@@ -5,10 +5,10 @@ sources:
     description: "Source système CIE - Tables source pour l'ingestion"
     database: '"sv3-cie"'
     schema: dbo
-    
+
     tables:
-      - name: jfa_conventionfacturation
-        description: "Table des conventions de facturation JFA"
+      - name: gs2e_agencebancaireBase
+        description: "Table des agenes bancaires"
         columns:
           - name: createdon
             description: "Date de création de l'enregistrement"
@@ -19,8 +19,8 @@ sources:
                   config:
                     where: "createdon >= current_date - interval '30' day"
       
-      - name: contract
-        description: "Table des contrats clients"
+      - name: gs2e_arretdecaisseBase
+        description: "Table des arrets de caisse"
         columns:
           - name: createdon
             description: "Date de création de l'enregistrement"
@@ -31,8 +31,8 @@ sources:
                   config:
                     where: "createdon >= current_date - interval '30' day"
       
-      - name: contractBase
-        description: "Table contractBase - informations de base des contrats"
+      - name: gs2e_ecartdeCaisseBase
+        description: "Table des écarts de caisse"
         columns:
           - name: createdon
             description: "Date de création de l'enregistrement"
@@ -43,8 +43,8 @@ sources:
                   config:
                     where: "createdon >= current_date - interval '30' day"
       
-      - name: contact
-        description: "Table des contacts clients"
+      - name: gs2e_remiseenbanque
+        description: "Table des remise en banque"
         columns:
           - name: createdon
             description: "Date de création de l'enregistrement"
@@ -54,6 +54,159 @@ sources:
                   severity: warn
                   config:
                     where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_sessiondelacaisseBase
+        description: "Table des sessions de caisse "
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"  
+      - name: SystemUser
+        description: "Table des utilisateurs système"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"    
+    
+      - name: gs2e_typefactureBase
+        description: "Table des types de factures"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+      
+      - name: gs2e_typelignecompteBase
+        description: "Table des types de ligne de compte"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+      
+      - name: jfa_agent_assimile
+        description: "Table des agents assimilés"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+      
+      - name: gs2e_typefacture
+        description: "Table des types de factures"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_articleproduitBase
+        description: "Table des articles produits"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"  
+      - name: gs2e_redevanceBase
+        description: "Table des redevances"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"   
+      - name: gs2e_trancheconsommationBase
+        description: "Table des tranches de consommation"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"    
+
+      - name: gs2e_articletravauxBase
+        description: "Table des articles travaux"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"  
+
+      - name: gs2e_demande_avoir_commercialBase
+        description: "Table des demandes d'avoir commercial"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day" 
+
+      - name: gs2e_tvaBase
+        description: "Table des TVA"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"    
+
+      - name: gs2e_bordereau
+        description: "Table des bordereaux"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"                                                                                 
 
   - name: data_quality_meta
     description: "Tables de métadonnées pour le contrôle qualité"
