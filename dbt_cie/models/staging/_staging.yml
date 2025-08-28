@@ -7,6 +7,272 @@ sources:
     schema: dbo
 
     tables:
+
+      - name: gs2e_ecriturecomptableBase
+        description: "Table des écritures comptables"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandebranchementBase
+        description: "Table des demandes de branchement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandeetalonnageBase
+        description: "Table des demandes d’étalonnage"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_regularisationdebranchementabonnement
+        description: "Table des régularisations de branchement/abonnement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_suppressionbranchementBase
+        description: "Table des suppressions de branchement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_DemanderesiliationsBase
+        description: "Table des demandes de résiliation"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandereaffectationreglementBase
+        description: "Table des demandes de réaffectation de règlement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandepaiementechelonneBase
+        description: "Table des demandes de paiement échelonné"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_reconstitutionimpayesBase
+        description: "Table des reconstitutions d’impayés"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_modificationbranchementBase
+        description: "Table des modifications de branchement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandededuplicataBase
+        description: "Table des demandes de duplicata"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandederemboursementBase
+        description: "Table des demandes de remboursement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandefacturationunitaireBase
+        description: "Table des demandes de facturation unitaire"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandeventedematerielsBase
+        description: "Table des demandes de vente de matériels"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_remplacementcompteursBT_HTBase
+        description: "Table des remplacements de compteurs BT/HT"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demande_redressementBase
+        description: "Table des demandes de redressement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandeannulationdefactureBase
+        description: "Table des demandes d’annulation de facture"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandemodificationcontractuelle
+        description: "Table des demandes de modification contractuelle"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandeabonnementBase
+        description: "Table des demandes d’abonnement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_DemandeMutationBase
+        description: "Table des demandes de mutation"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandeinterventiondiverseBase
+        description: "Table des demandes d’interventions diverses"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+      - name: gs2e_demandebranchementabonnement
+        description: "Table des demandes de branchement abonnement"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"
+
+
       - name: gs2e_agencebancaireBase
         description: "Table des agenes bancaires"
         columns:
@@ -206,7 +472,18 @@ sources:
               - not_null:
                   severity: warn
                   config:
-                    where: "createdon >= current_date - interval '30' day"                                                                                 
+                    where: "createdon >= current_date - interval '30' day" 
+      - name: gs2e_lignecompteclientBase
+        description: "Table des lignes de compte client"
+        columns:
+          - name: createdon
+            description: "Date de création de l'enregistrement"
+            data_type: timestamp
+            tests:
+              - not_null:
+                  severity: warn
+                  config:
+                    where: "createdon >= current_date - interval '30' day"                                                                                                  
 
   - name: data_quality_meta
     description: "Tables de métadonnées pour le contrôle qualité"
