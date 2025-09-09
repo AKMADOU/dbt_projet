@@ -21,10 +21,12 @@ models:
     +file_format: parquet
     staging:
       +materialized: view
+      +pre-hook: "{{ run_quality_checks_pre_hook(this) }}"
     marts:
       +materialized: table
       +partition_by: ['partition_id']
       +file_format: parquet
+      +post-hook: "{{ run_quality_checks_post_hook(this) }}"
 
 vars:
   # Configuration des schémas
@@ -41,6 +43,12 @@ vars:
   
   # Tag pour le contrôle qualité
   quality_tag: CIE_Abonne_All-Quality
+  
+  # Configuration pour les métriques de qualité
+  quality_metrics:
+    - row_count
+    - null_count_createdon
+    - distinct_partition_id
 
 on-run-start:
   - "{{ log('🚀 Démarrage du pipeline dbt_cie', info=true) }}"
